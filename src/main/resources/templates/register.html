@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+<link rel="stylesheet"  href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
+<link rel="stylesheet"  href="/css/fontawesome.min.css">
+<link rel="shortcut icon" href="#">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #a3a21e;">
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<br /><br /><br />
+<div class="container">
+  <div class="row col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+          <h2 class="text-center">Registration Form</h2>
+      </div>
+      <div th:if="${param.success}">
+          <div class="alert alert-info">
+            You have successfully registered our app!
+          </div>
+      </div>
+      <div class="card-body">
+          <form
+            method="post"
+            role="form"
+            th:action="@{/register/save}"
+            th:object="${user}"
+          >
+          <div class="form-group row">
+            <div   class="col-md-5 mb-3">
+              <label class="form-label">Name of the Applicant</label>
+              <input
+                      class="form-control"
+                      id="user_nm"
+                      name="user_nm"
+                      placeholder="Enter Applicant Name"
+                      th:field="*{user_nm}"
+                      type="text"
+              />
+              <p th:errors = "user_nm" class="text-danger"
+              th:if="${#fields.hasErrors('user_nm')}"></p>
+            </div>
+	<div class="col-md-1 mb-3"> </div>
+            <div  class="col-md-5 mb-3">
+              <label class="form-label">Date of Birth</label>
+              <input
+                      class="form-control"
+                      id="dob"
+                      name="dob"
+                      placeholder="Enter Date of birth"
+                      th:field="*{dob}"
+                      type="date"
+              />
+              <p th:errors = "*{dob}" class="text-danger"
+                 th:if="${#fields.hasErrors('dob')}"></p>
+            </div>
+</div>
+<div class="form-group row">
+            <div class="col-md-5 mb-3">
+              <label class="form-label">Mobile No</label>
+              <input
+                      class="form-control"
+                      id="mobile_no"
+                      name="mobile_no"
+                      placeholder="Enter Mobile No"
+                      th:field="*{mobile_no}"
+                      type="text"
+              />
+              <p th:errors = "*{mobile_no}" class="text-danger"
+                 th:if="${#fields.hasErrors('mobile_no')}"></p>
+            </div>
+<div class="col-md-1 mb-3"> </div>
+            <div class="col-md-5 mb-3">
+              <label class="form-label">House No</label>
+              <input
+                      class="form-control"
+                      id="area"
+                      name="area"
+                      placeholder="Enter House NO"
+                      th:field="*{area}"
+                      type="text"
+              />
+              <p th:errors = "*{area}" class="text-danger"
+                 th:if="${#fields.hasErrors('area')}"></p>
+            </div>
+            </div>
+            <div class="form-group row">
+            <div class="col-md-5 mb-3">
+              <label class="form-label">Address</label>
+              <input
+                      class="form-control"
+                      id="address"
+                      name="address"
+                      placeholder="Enter Address"
+                      th:field="*{address}"
+                      type="text"
+              />
+              <p th:errors = "*{address}" class="text-danger"
+                 th:if="${#fields.hasErrors('address')}"></p>
+            </div>
+             <div class="col-md-1 mb-3"> </div>
+            <div class="col-md-5 mb-3">
+              <label class="form-label">Pin code</label>
+              <input
+                      class="form-control"
+                      id="pincode"
+                      name="pincode"
+                      placeholder="Enter Address"
+                      th:field="*{pincode}"
+                      type="text"
+              />
+              <p th:errors = "*{pincode}" class="text-danger"
+                 th:if="${#fields.hasErrors('pincode')}"></p>
+            </div>
+            </div>
+            
+            <div class="form-group row">
+            <div class="col-md-5 mb-3">
+              <label class="form-label">Email id</label>
+              <input
+                      class="form-control"
+                      id="reqloginnm"
+                      name="reqloginnm"
+                      placeholder="Enter Address"
+                      th:field="*{reqloginnm}"
+                      type="email"
+              />
+              <p th:errors = "*{reqloginnm}" class="text-danger"
+                 th:if="${#fields.hasErrors('reqloginnm')}"></p>
+            </div>
+            <div class="col-md-1 mb-3"> </div>
+            <div class="col-md-5 mb-3">
+              <label class="form-label" for="exampleInputPassword1">Password</label>
+              <input
+                      class="form-control"
+                      id="user_pwd"
+                      name="user_pwd"
+                      placeholder="Password"
+                      th:field="*{user_pwd}"
+                      type="password"
+              />
+              <p th:errors = "*{user_pwd}" class="text-danger"
+                 th:if="${#fields.hasErrors('user_pwd')}"></p>
+            </div>
+            </div>
+           
+            <div class="form-group">
+              <button class="btn btn-success" type="submit">Register</button>
+              <span>Already registered? <a th:href="@{/login}">Login here</a></span>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
